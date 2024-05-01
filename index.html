@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>CRUD</title>
+  </head>
+  <body class="bg-emerald-300">
+    <div class="content">
+      <h1 class="text-3xl text-red-500">حساب الاجمالي</h1>
+
+      <div class="form">
+        <div class="final-price">
+          <div>
+            <label for="money">التحويل</label>
+            <input type="text" name="money" id="money" />
+            <button class="save" onclick="savemoney()">حفظ</button>
+          </div>
+
+          <div class="mortag">
+            <div>
+              <label for="mor">اضافة</label>
+              <input type="text" name="mor" id="mor" />
+              <button class="new save" onclick="getmortag()">احسب</button>
+            </div>
+          </div>
+          <div class="igmally">
+            <label for="final-money">الاجمالي</label>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="price">
+          <div>
+            <label for="name">الاسم</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label for="cous">السبب</label>
+            <input type="text" name="cous" id="cous" />
+          </div>
+          <div>
+            <label for="price">السعر</label>
+            <input type="text" name="price" id="price" />
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="new" id="new" onclick="generatenamesandprice()">
+          احسب
+        </button>
+        <button class="del" onclick="detletAll()">مسح الكل</button>
+      </div>
+
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th>الاسم</th>
+            <th>السبب</th>
+            <th>السعر</th>
+            <th>الوقت</th>
+            <th>تحديث</th>
+            <th>مسح</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
