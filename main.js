@@ -20,6 +20,8 @@ let totalAfterPrice;
 
 let mortag;
 
+let globalTprcie;
+
 let mood = "create";
 let tmp;
 
@@ -40,12 +42,24 @@ if (!(localStorage.product == undefined)) {
   datapro = [];
 }
 
-if (!(localStorage.total == undefined)) {
+if (localStorage.total !== undefined) {
   total = localStorage.total;
 
   spanMoney.innerHTML = localStorage.total;
 } else {
   total = "";
+}
+
+// console.log(localStorage.tprice);
+
+// console.log(globalTprcie);
+
+if (!(localStorage.tprice == "0")) {
+  globalTprcie = localStorage.tprice;
+
+  document.getElementById("tprice").innerHTML = localStorage.tprice;
+} else {
+  globalTprcie = "";
 }
 
 function savemoney() {
@@ -97,6 +111,7 @@ function showData() {
   let table = ``;
 
   spanMoney.innerHTML = localStorage.getItem("total");
+  document.getElementById("tprice").innerHTML = localStorage.tprice;
 
   for (let i = 0; i < datapro.length; i++) {
     table += ` <tr>
@@ -111,6 +126,8 @@ function showData() {
 
   tbody.innerHTML = table;
 }
+
+showData();
 
 function updateData(i) {
   nameInput.value = datapro[i].name;
@@ -147,9 +164,9 @@ function deleteData(i) {
   datapro.splice(i, 1);
   localStorage.product = JSON.stringify(datapro);
   showData();
-}
 
-showData();
+  footer();
+}
 
 // console.log(datapro);
 
@@ -164,6 +181,8 @@ function getTotal() {
   }
   // console.log(total);
   totalAfterPrice = parseFloat(total) - totalPrice;
+
+  footer();
 }
 
 function getmortag() {
@@ -221,3 +240,20 @@ function showError(msg) {
 
   document.body.append(divError);
 }
+
+function footer() {
+  let totalPrice = 0;
+  for (let index = 0; index < datapro.length; index++) {
+    let element = datapro[index];
+
+    totalPrice += parseInt(element.price);
+  }
+
+  globalTprcie = totalPrice;
+
+  localStorage.setItem("tprice", globalTprcie);
+
+  showData();
+}
+
+footer();
