@@ -83,11 +83,12 @@ function generatenamesandprice() {
       datapro[tmp] = newpro;
     }
 
+    getTotal();
+
     clearInputs();
   } else {
     showError("Cannot Read empty Inputs");
   }
-  getTotal();
   localStorage.setItem("total", totalAfterPrice);
   showData();
 }
